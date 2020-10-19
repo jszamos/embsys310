@@ -9,15 +9,18 @@ On an LCD, the main unit:
 
 The remote unit should have a very minimal microcontroller, a temperature and a humidity sensor, and a very low power 
 RF transmitter. While I haven't verified how it works [by measuring current draw over a period of time], the microcontroller
-probably sleeps most of the time, wakes up periodically  (i.e. once a minute), reads the sensors transmits the data, and 
-then goes back to sleep.
+probably sleeps most of the time, wakes up periodically  (i.e. once a minute), reads the sensors, transmits the data, and 
+then goes back to sleep.  The sensors are most likely analog (predates the wide availability of i2c output sensors) so it
+should use an ADC to convert the sensors' analog output to digital.
 
-The main unit is somewhat more complicated -- it should have an RF receiver that's probably on all the time (as per spec 
-sheet, it supports up to four remote units), some driver code for the LCD, and some code to compute sunset/sunrise/Moon 
-phase based on longitude and latitude.
+The main unit is somewhat more complicated -- it should have an RF receiver that's probably on all the time (as per user 
+manual, it supports up to four remote units), it's own senors plus ADC plus code to compute humidity and temperature,
+some driver code for the LCD, and some code to compute sunset/sunrise/Moon phase based on longitude and latitude.
 
 With respect to embedded systems programming, for the most parts, I consider this a very straightforward system -- something 
-that's relatively easy to design and implement.
+that's relatively easy to design and implement.  Runnning an edless loop to continuously display time and once in a while 
+(like once every minute) read the local and remote sensors and update the values showm.  Lastly, once a day update 
+sunrise/sunset and Moon phase.
 
 I think the most challenging part could be to come with the algorithm to correctly compute sunset, sunrise, and 
 the Moon phase for selectable cities, and fit all that into a likely to be very limited code space. That could be 
