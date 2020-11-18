@@ -30,7 +30,7 @@ int main()
 {
     // initialization 
     RCC_AHB2ENR |= GPIOAEN;     // enable clock to I/O port A
-    GPIOA_MODER &= ~PORT5_MSK;  // clear the mode bits  of port 5
+    GPIOA_MODER &= ~PORT5_MSK;  // clear the mode bits of port 5
     GPIOA_MODER |= PORT5_OUT;   // set port 5 to general purpose output mode
      
     // blink LED1 in an infinite loop
@@ -38,6 +38,12 @@ int main()
     {
         GPIOA_ODR ^= LED1;      // toggle LED1 with xor set
         wait(WAIT);
+#if 0
+        GPIOA_ODR = LED1;   
+        wait(WAIT);
+        GPIOA_ODR = 0; 
+        wait(WAIT);
+#endif        
     } 
 }
 
