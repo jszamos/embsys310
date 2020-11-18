@@ -45,42 +45,42 @@
 
 // use an array of strings (essentially a LUT) to store the Morse codes
 const char* morse[] = {	
-            "-----",	// 0
-						".----",	// 1
-						"..---",	// 2
-						"...--",	// 3
-						"....-",	// 4
-						".....",	// 5
-						"-....",	// 6
-						"--...",	// 7
-						"---..",	// 8
-						"----.",	// 9
-						".-",		  // A
-						"-...",		// B
-						"-.-.",		// C
-						"-..",		// D
-						".",		  // E
-						"..-.",		// F
-						"--.",		// G
-						"....",		// H
-						"..",		  // I
-						".---",		// J
-						"-.-",		// K
-						".-..",		// L
-						"--",		  // M
-						"-.",		  // N
-						"---",		// O
-						".--.",		// P
-						"--.-",		// Q
-						".-.",		// R
-						"...",		// S
-						"-",		  // T
-						"..-",		// U
-						"..-",		// V
-						".--",		// W
-						"-..-",		// X
-						"-.--",		// Y
-						"--.." };	// Z
+            	"-----",	// 0
+		".----",	// 1
+		"..---",	// 2
+		"...--",	// 3
+		"....-",	// 4
+		".....",	// 5
+		"-....",	// 6
+		"--...",	// 7
+		"---..",	// 8
+		"----.",	// 9
+		".-",		// A
+		"-...",		// B
+		"-.-.",		// C
+		"-..",		// D
+		".",		// E
+		"..-.",		// F
+		"--.",		// G
+		"....",		// H
+		"..",		// I
+		".---",		// J
+		"-.-",		// K
+		".-..",		// L
+		"--",		// M
+		"-.",		// N
+		"---",		// O
+		".--.",		// P
+		"--.-",		// Q
+		".-.",		// R
+		"...",		// S
+		"-",		// T
+		"..-",		// U
+		"..-",		// V
+		".--",		// W
+		"-..-",		// X
+		"-.--",		// Y
+		"--.." };	// Z
 
 const char*	words[] = { "Janos", "Szamosfalvi", "10/30/2020", "Election_2020" };
 
@@ -91,10 +91,10 @@ void wait(int count);
 int main()
 {
     int	 i;         // index
-	  uint lc = 0;	// loop count 
+    uint lc = 0;	// loop count 
 
-	  const char* mcurr;		// morse code pointer
-	  const char* wcurr;		// wordlist pointer 
+    const char* mcurr;		// morse code pointer
+    const char* wcurr;		// wordlist pointer 
     
     // initialize the HW for LED1
     RCC_AHB2ENR |=  (GPIOAEN | GPIOBEN); // enable clock to I/O port A and B
@@ -106,7 +106,7 @@ int main()
     GPIOB_MODER &= 0xDFFFFFFF;
     
     while (1)
-	  {
+    {
         // get index to current word in words[]
 		    i = lc % (sizeof(words) / sizeof(const char*));
 
@@ -116,12 +116,12 @@ int main()
 		    {
 			      // if it's a number
 			      if ((*wcurr >= '0') && (*wcurr <= '9'))
-			      {
+		      	      {
 				        // get a pointer to the first entry of the morse code -- we use 
 				        // mcurr, so we don't lose our pointer in case of repeat usage
 				        mcurr = morse[(*wcurr) - '0'];
 				        while (*mcurr)
-                    print(*mcurr++);
+                    				print(*mcurr++);
                 
 				        print(' ');     // print gap between letters
 			      }
@@ -132,14 +132,14 @@ int main()
 				        // get morse code pointer
 				        mcurr = morse[(*wcurr | 0x20) - 'a' + 10];
 				        while (*mcurr)
-                    print(*mcurr++);
+                    				print(*mcurr++);
                 
-                print(' ');     // print gap between letters
+                			print(' ');     // print gap between letters
 			      }
           
-            // if neither 0..9 or a..z, print a 7 unit wait
+            		      // if neither 0..9 or a..z, print a 7 unit wait
 			      else
-                print('/'); // inter word gap for chars not in [0..9, a..z]
+                			print('/'); // inter word gap for chars not in [0..9, a..z]
             
 			      *wcurr++;       // point to next char in the word 
             
@@ -157,7 +157,7 @@ int main()
             GPIOB_ODR &= ~ORD14;
         }
         
-	  }   // end while (1)
+    }   // end while (1)
   
 }   // end main()
 
