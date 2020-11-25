@@ -15,9 +15,9 @@ b) The extra code is to store the 5th arg on the stack -- MOVS  R0, #5 and STR R
 c) The extra code is savving R5 = PUSH {R5}, and the loading the 5th param from the stack into R5 = LDR   R5, [SP,#0x8], and at end restoring R5 = POP  {R5}
 d) I made both void func1() and int func1(), and called them appropriately from func2(), and to much of my surprise. the assembly code for func2 did not change in spite of the obvious difference between  "func1(0, 1, 2, 3, 4)" and "retval = func1(0, 1, 2, 3, 4)".   Func1 had one extra instruction for the version returning the sum, and had a slightly different register usage. 
 
-![Question 2(https://github.com/jszamos/embsys310/blob/assignment04/1-int-func1.png)
+![Question 2(https://github.com/jszamos/embsys310/blob/assignment04/2-int-func1.png)
 
-![Question 2(https://github.com/jszamos/embsys310/blob/assignment04/1-void-func1.png)
+![Question 2(https://github.com/jszamos/embsys310/blob/assignment04/2-void-func1.png)
 
 Code is in: "func"
 
