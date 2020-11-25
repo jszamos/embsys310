@@ -1,4 +1,4 @@
-1.
+<br>1.
 a)  the compiler used 3 instruction -- MOVS, LDR.N, and STR when using a bit-band address to write the GPIO bit
 
 ![Question 1a](https://github.com/jszamos/embsys310/blob/assignment04/1-bitband.png)
@@ -9,7 +9,7 @@ b)  The compiler used 4 instructions -- LDR.N, LDR, ORRS.W and STR when writing 
 
 Code is in "blinker"
 
-2.
+<br>2.
 a) The first 4 parameters are passed in registers R0..R3, the 5th parameter is pushed onto the stack by the caller, and then popped out by the callee using LDR
 b) The extra code is to store the 5th arg on the stack -- MOVS  R0, #5 and STR R0, [SP]
 c) The extra code is savving R5 = PUSH {R5}, and the loading the 5th param from the stack into R5 = LDR   R5, [SP,#0x8], and at end restoring R5 = POP  {R5}
@@ -21,4 +21,4 @@ d) I made both void func1() and int func1(), and called them appropriately from 
 
 Code is in: "func"
 
-3. Completed, code is in "stack"
+<br>3. Completed, code is in "stack"
