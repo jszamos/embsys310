@@ -46,6 +46,11 @@ Return value    : R0: 0 if the chars are equal, 1 otherwise
 *******************************************************************************/  
   
 swapCharAsm
+    PUSH {R0, R1, LR}   // save input arguments (xPtr, yPtr) and return address
+    LDR R0, =myCstr     // load (global) address of address of string into R0
+    LDR R0, [R0]        // load address of string into R0
+    BL  PrintString     // call PrintString to print the string
+    POP {R0, R1, LR}    // restore input arguments and LR
     LDRB R3, [R0]       // read char pointed by R0 into R3
     LDRB R2, [R1]       // read char pointed by R1 into R2
     STRB R3, [R1]       // write char from R3 to a location pointed by R1
