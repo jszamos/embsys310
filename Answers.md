@@ -13,7 +13,7 @@
 
    int32_t divAsm(int val);
 
-   uint32_t divResult; 
+   int32_t divResult; 
 
    divResult = divAsm(counter);<br>
    PrintString(" x/2 = ");<br>
