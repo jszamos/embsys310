@@ -115,7 +115,7 @@ int main(void)
 
     uint32_t counter = 13;
     uint32_t sqrResult;
-    uint32_t divResult; 
+    int32_t  divResult; 
 
     HAL_UART_Transmit(&huart1, myTxData, sizeof(myTxData), 10);
 
