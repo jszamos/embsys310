@@ -26,8 +26,9 @@
 
 <br><b>3.</b>
 <br>a) done
-<br>b) done;  assembly routine is in /asm/
-<br>c) done
+<br>b) done;  assembly routine is in /asm/, complete C code is in /Hello_World/main.c
+<br>c) done <br>
+![Question 3c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_3c.png)
 
  <br><b>4.</b>
  <br>a) done; assembly routine is in /asm/
