@@ -1,7 +1,7 @@
 <br>1.
 <br>a) "main" pushes x, y, yPtr and yPtr onto the stack prior to calling the swap_pointer() function.
 <br>b) R0 = 0x200003f4	R1 = 0x200003f0
-<br>c) below
+<br>c) below <br>
 ![Question 1c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_1c.png)
 
 <btr>2.
