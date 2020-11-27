@@ -144,6 +144,25 @@ int main(void)
 
         HAL_Delay(1000);
     }
+ 
+     PrintString("\n\n********* Testing swapCharAsm() **********\n\n"); 
+    char ch1;
+    char ch2;   
+    char str1[] = "DEADBEEF";
+    char str2[] = "ABADFEED"; 
+    int  cswap_result; 
+    
+    for (int i = 0; i < 8; i++) 
+    {
+        ch1 = str1[i];
+        ch2 = str2[i]; 
+        RETAILMSG(1, ("Before swap: char1 = %c, char2 = %c \r", ch1, ch2)); 
+        cswap_result = swapCharAsm(&ch1, &ch2);  
+        RETAILMSG(1, ("\r\n After swap: char1 = %c, char2 = %c", ch1, ch2));
+        RETAILMSG(1, (" -- they are%sequal \r\n\n", (cswap_result == 0) ? " " : " not "));
+        HAL_Delay(500);
+    }
+    HAL_Delay(3000);
     
     // code to test swapPointersAsm()
     PrintString("\n\n******* Testing swapPointersAsm() ********\n");
