@@ -4,7 +4,7 @@
 <br>c) below <br>
 ![Question 1c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_1c.png)
 
-<br>2.
+<br><b>2.</b>
 <br>a) done
 <br>b) done; assembly routine is in /asm/
 <br>c) done
@@ -22,6 +22,15 @@
 
 <br>f) done
 
-![Question 1c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_2f.png)   
+![Question 2f.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_2f.png)   
 
+<br><b>3.</b>
+<br>a) done
+<br>b) done;  assembly routine is in /asm/
+<br>c) done
 
+ <br><b>4.</b>
+ <br>a) done; assembly routine is in /asm/
+ <br>b) done; "main" code is in /Hello_World/
+ <br>c) done<br>
+![Question 4c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_4c.png)
