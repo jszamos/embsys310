@@ -33,4 +33,4 @@
  <br>a) done; assembly routine is in /asm/
  <br>b) done; "main" code is in /Hello_World/
  <br>c) done<br>
-![Question 4c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_4c.png)
+![Question 4c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_4f.png)
