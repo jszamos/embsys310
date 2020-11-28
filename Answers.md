@@ -22,3 +22,5 @@ Code is in "blinker"
 Code is in: "func"
 
 <br>3. Completed, code is in "stack"
+
+<br>4. Completed, code is in "endian"
