@@ -1,6 +1,6 @@
 <br><b>1.</b>
 <br>a) "main" pushes x, y, yPtr and yPtr onto the stack prior to calling the swap_pointer() function.
-<br>b) R0 = 0x200003f4	R1 = 0x200003f0
+<br>b) The values in R0 & R1 are the memory addresses of the 2 integers, x and y
 <br>c) below <br>
 ![Question 1c.](https://github.com/jszamos/embsys310/blob/assignment05/AS5_1c.png)
 
