@@ -22,5 +22,6 @@ Code is in "blinker"
 Code is in: "func"
 
 <br>3. Completed, code is in "stack"
+<br>Update: I realized that we need to implement a stack with pointers, so I created a new implementation, stack2.c.   main.c and stack.h are unchanged.
 
 <br>4. Completed, code is in "endian"
