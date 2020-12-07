@@ -3,18 +3,18 @@
 * Author                : Janos Szamosfalvi
 * Date Created          : 11/30/2020
 * Descripton            : Blink LED1 on a B-L475E-IOT01A evaluation board with 
-*                       : 1 second long ON/OFF periods for 60 seconds using CMSIS.
+*                       : 1 second long ON/OFF periods for 10 mins using CMSIS.
 **********************************************************************************/
 
 #include "stm32l475xx.h"
 
-#define WAIT  785   // count that yields a roughly 1 ms long wait in this program
+#define WAIT  796   // a count that yields a roughly 1 ms long delay in this program
 
 void delay(unsigned count);
 
 int main()
 {
-    int count = 60;     // for 60 seconds of total blink time
+    int count = 600;     // 10 * 60 for 10 minutes of total blink time
     
     // Enable GPIOA's peripheral clock
     RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
