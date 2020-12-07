@@ -51,19 +51,18 @@ Return value    : None
 // Bitband address calculation formula
 // (0x42000000+(0x2104C *32) + (1*4))) = 0x1;
 
-BB_PERIPH_BASE      EQU  0x42000000
-BB_RCC_OFFSET       EQU  0x2104C
+BB_PERIPH_BASE_PRC  EQU  0x42000000 >> 16  
+BB_RCC_OFFSET_PRC   EQU  0x2104C << 5
 
 enable_rcc
-    LDR     R3, =BB_RCC_OFFSET      // load RCC offset
-    LSL     R3, R3, #5              // multiply it by 32 as per formula 
-    LSL     R1, R0, #2              // multiplu input port by 4 
-    ADD     R3, R3, R1              // add them together 
-    LDR     R2, =BB_PERIPH_BASE     // load BB alias of peripheral base 
-    ADD     R2, R2, R3              // add BB base address to it
-    MOV     R6, #1                  // set R6 to 1
-    STR     R6, [R2]                // write 1 to BB address of LED1
-    BX      LR                      // return    
+    MOVT    R4, #BB_PERIPH_BASE_PRC // move PReComputed periph base value into top of R4
+    LDR     R5, =BB_RCC_OFFSET_PRC  // load PReComputed RCC offset
+    LSL     R0, R0, #2              // multiply port number by 4 as per formula 
+    ADD     R5, R5, R0              // add it to offset as per formula 
+    ADD     R4, R4, R5              // add everything together to complete BB address 
+    MOV     R6, #1                  // set R6 to 1 (enable)
+    STR     R6, [R4]                // write 1 to completed BB address of LED1 to enable it
+    BX      LR                      // return  
 
     END
     
