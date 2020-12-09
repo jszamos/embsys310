@@ -4,7 +4,7 @@ a., b., c., d., e.: all done <br><br>
 a. 376 + 80 = 456 bytes <br>
 b. 8268 bytes  <br>
 c. main.o uses 152 of 376 bytes <br>
-d.the stack<br><br><br>
+d. the stack<br><br><br>
 <b>3.</b><br>
 a) Reduce ROM usage <br>
  1 - turn on optimization. On mediun code drops to: "328 bytes of readonly  code memory" <br>
