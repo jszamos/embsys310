@@ -1,9 +1,9 @@
-<b>1.</b>
+<b>1.</b><br>
 a., b., c., d., e.: all done <br><br>
-<b>2.</b>
+<b>2.</b><br>
 a. 376 + 80 = 456 bytes <br>
 b. 8268 bytes  <br>
-c. main.o uses 152 of 376 bytes
+c. main.o uses 152 of 376 bytes <br>
 d.the stack<br><br><br>
 <b>3.</b><br>
 a) Reduce ROM usage <br>
