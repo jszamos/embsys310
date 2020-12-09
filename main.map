@@ -1,0 +1,200 @@
+###############################################################################
+#
+# IAR ELF Linker V8.50.6.265/W32 for ARM                  09/Dec/2020  06:30:53
+# Copyright 2007-2020 IAR Systems AB.
+#
+#    Output file  =  E:\Embsys310\Module8\vector-demo\Debug\Exe\main.out
+#    Map file     =  E:\Embsys310\Module8\vector-demo\Debug\List\main.map
+#    Command line =
+#        -f C:\Users\Janos\AppData\Local\Temp\EW76A2.tmp
+#        (E:\Embsys310\Module8\vector-demo\Debug\Obj\main.o
+#        E:\Embsys310\Module8\vector-demo\Debug\Obj\startup_stm32l475xx.o
+#        --no_out_extension -o
+#        E:\Embsys310\Module8\vector-demo\Debug\Exe\main.out --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        E:\Embsys310\Module8\vector-demo\Debug\List\main.map --config
+#        E:\Embsys310\Module8\vector-demo\main.icf --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x0] |
+                [from 0x800'0000 to 0x80f'ffff] { ro };
+define block CSTACK with size = 8'264, alignment = 8 { };
+define block PROC_STACK with size = 0, alignment = 8 { };
+define block HEAP with size = 0, alignment = 8 { };
+"P3":  place in [from 0x2000'0000 to 0x2001'7fff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P5"
+  rw section application_specific_rw  in "P2|P5"
+  section .textrw                     in "P4"
+
+
+  Section          Kind         Address    Size  Object
+  -------          ----         -------    ----  ------
+"A0":                                      0x40
+  .intvec          const     0x800'0000    0x40  startup_stm32l475xx.o [1]
+                           - 0x800'0040    0x40
+
+"P1":                                     0x188
+  .text            ro code   0x800'0040    0x98  main.o [1]
+  .text            ro code   0x800'00d8    0x3a  zero_init3.o [3]
+  .text            ro code   0x800'0112    0x2a  startup_stm32l475xx.o [1]
+  .text            ro code   0x800'013c    0x28  data_init.o [3]
+  .iar.init_table  const     0x800'0164    0x10  - Linker created -
+  .text            ro code   0x800'0174    0x1e  cmain.o [3]
+  .text            ro code   0x800'0192     0x4  low_level_init.o [2]
+  .text            ro code   0x800'0196     0x4  exit.o [2]
+  .text            ro code   0x800'019c     0xa  cexit.o [3]
+  .text            ro code   0x800'01a8    0x14  exit.o [4]
+  .text            ro code   0x800'01bc     0xc  cstartup_M.o [3]
+  .rodata          const     0x800'01c8     0x0  zero_init3.o [3]
+                           - 0x800'01c8   0x188
+
+"P3", part 1 of 2:                          0x4
+  .bss             zero     0x2000'0000     0x4  main.o [1]
+                          - 0x2000'0004     0x4
+
+"P3", part 2 of 2:                       0x2048
+  CSTACK                    0x2000'0008  0x2048  <Block>
+    CSTACK         uninit   0x2000'0008  0x2048  <Block tail>
+                          - 0x2000'2050  0x2048
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+          0x0          0x0       0x1
+   0x800'01c8   0x80f'ffff  0xf'fe38
+  0x2000'0004  0x2000'0007       0x4
+  0x2000'2050  0x2001'7fff  0x1'5fb0
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x4:
+          0x2000'0000   0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  ro data  rw data
+    ------                 -------  -------  -------
+command line/config:
+    ------------------------------------------------
+    Total:
+
+E:\Embsys310\Module8\vector-demo\Debug\Obj: [1]
+    main.o                     152                 4
+    startup_stm32l475xx.o       42       64
+    ------------------------------------------------
+    Total:                     194       64        4
+
+dl7M_tln.a: [2]
+    exit.o                       4
+    low_level_init.o             4
+    ------------------------------------------------
+    Total:                       8
+
+rt7M_tl.a: [3]
+    cexit.o                     10
+    cmain.o                     30
+    cstartup_M.o                12
+    data_init.o                 40
+    zero_init3.o                58
+    ------------------------------------------------
+    Total:                     150
+
+shb_l.a: [4]
+    exit.o                      20
+    ------------------------------------------------
+    Total:                      20
+
+    Gaps                         4
+    Linker created                       16    8'264
+----------------------------------------------------
+    Grand Total:               376       80    8'268
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address  Size  Type      Object
+-----                       -------  ----  ----      ------
+.iar.init_table$$Base    0x800'0164         --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'0174         --   Gb  - Linker created -
+?main                    0x800'0175        Code  Gb  cmain.o [3]
+BusFault_Handler         0x800'012d   0x8  Code  Gb  startup_stm32l475xx.o [1]
+CSTACK$$Base            0x2000'0008         --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'2050         --   Gb  - Linker created -
+HardFault_Handler        0x800'011d   0x8  Code  Gb  startup_stm32l475xx.o [1]
+MemManage_Handler        0x800'0125   0x8  Code  Gb  startup_stm32l475xx.o [1]
+NMI_Handler              0x800'0115   0x8  Code  Gb  startup_stm32l475xx.o [1]
+Region$$Table$$Base      0x800'0164         --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'0174         --   Gb  - Linker created -
+SysTick_Handler          0x800'009f  0x14  Code  Gb  main.o [1]
+SysTick_Init             0x800'0089  0x16  Code  Gb  main.o [1]
+Unused_Handler           0x800'0113   0x2  Code  Gb  startup_stm32l475xx.o [1]
+UsageFault_Handler       0x800'0135   0x8  Code  Gb  startup_stm32l475xx.o [1]
+__cmain                  0x800'0175        Code  Gb  cmain.o [3]
+__exit                   0x800'01a9  0x14  Code  Gb  exit.o [4]
+__iar_data_init3         0x800'013d  0x28  Code  Gb  data_init.o [3]
+__iar_program_start      0x800'01bd        Code  Gb  cstartup_M.o [3]
+__iar_zero_init3         0x800'00d9  0x3a  Code  Gb  zero_init3.o [3]
+__low_level_init         0x800'0193   0x4  Code  Gb  low_level_init.o [2]
+__vector_table           0x800'0000  0x40  Data  Gb  startup_stm32l475xx.o [1]
+_call_main               0x800'0181        Code  Gb  cmain.o [3]
+_exit                    0x800'019d        Code  Gb  cexit.o [3]
+_main                    0x800'018f        Code  Gb  cmain.o [3]
+delay                    0x800'00b3   0xc  Code  Gb  main.o [1]
+exit                     0x800'0197   0x4  Code  Gb  exit.o [2]
+g_sysTickCount          0x2000'0000   0x4  Data  Gb  main.o [1]
+main                     0x800'0041  0x48  Code  Gb  main.o [1]
+
+
+[1] = E:\Embsys310\Module8\vector-demo\Debug\Obj
+[2] = dl7M_tln.a
+[3] = rt7M_tl.a
+[4] = shb_l.a
+
+    376 bytes of readonly  code memory
+     80 bytes of readonly  data memory
+  8'268 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
