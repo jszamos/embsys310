@@ -40,8 +40,6 @@ int main()
 
 void SysTick_Init(void)
 {
-    g_sysTickCount = 0;           // reset global tick count
-  
     // configure SysTick registers
     SysTick->LOAD = SYSTICK_1MS - 1;                // count down from 3999 to 0
     SysTick->VAL = 0x0;                             // clear SysTick 
