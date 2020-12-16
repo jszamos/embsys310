@@ -33,7 +33,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define MAX_PWM  1699
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -96,50 +95,53 @@ int main(void)
   MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim2,  TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_2);  
+  HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   uint16_t i; 
+  uint16_t wait; 
+  
+  // start with1 second blank slate 
   set_LED1_drive(0);
   set_LED2_drive(0);
   HAL_Delay(1000); 
   
+  
   while (1)
   {
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    
     // slowly turn on LED1
     for (i = 0; i <= MAX_PWM; i++)
     { 
+       wait = (400 / (i + 1)) / 6 + 1;  
        set_LED1_drive(i);
-       HAL_Delay(3);  
+       HAL_Delay(wait);   
     }
     
     // slowly turn off LED1 whiile at the same time turn on LED2
     for (i = 0; i <= MAX_PWM; i++) 
     { 
+       wait = (400 / (i + 1)) / 6 + 1;  
        set_LED1_drive(MAX_PWM - i);
        set_LED2_drive(i);
-       HAL_Delay(3);         
+       HAL_Delay(wait);         
     }    
     
     // slowly turn off LED2
     for (i = 0; i <= MAX_PWM; i++)
     {
+       wait = (400 / (MAX_PWM - i + 1)) / 6 + 1;  
        set_LED2_drive(MAX_PWM - i);
-       HAL_Delay(3);  
+       HAL_Delay(wait);  
 
-    }    
+    }       
   }
   /* USER CODE END 3 */
 }
-
 
 /**
   * @brief System Clock Configuration
@@ -242,8 +244,6 @@ static void MX_TIM2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM2_Init 2 */
-  //    htim2.Init.Period = 511;
-    HAL_TIM_PWM_Init(&htim2);
 
   /* USER CODE END TIM2_Init 2 */
   HAL_TIM_MspPostInit(&htim2);
@@ -375,10 +375,8 @@ void set_LED2_drive(uint16_t pwm)
     sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
     
     HAL_TIM_PWM_ConfigChannel(&htim15, &sConfigOC, TIM_CHANNEL_1);
-    HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);
-    
+    HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);   
 }
-
 /* USER CODE END 4 */
 
 /**
