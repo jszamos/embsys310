@@ -61,6 +61,7 @@ static void MX_TIM15_Init(void);
 /* USER CODE BEGIN 0 */
 void set_LED1_drive(uint16_t pwm);
 void set_LED2_drive(uint16_t pwm);
+uint16_t get_delay(uint16_t value); 
 /* USER CODE END 0 */
 
 /**
@@ -101,7 +102,6 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint16_t i; 
-  uint16_t wait; 
   
   // start with1 second blank slate 
   set_LED1_drive(0);
@@ -116,31 +116,37 @@ int main(void)
     /* USER CODE BEGIN 3 */
     // slowly turn on LED1
     for (i = 0; i <= MAX_PWM; i++)
-    { 
-       wait = (400 / (i + 1)) / 6 + 1;  
+    {  
        set_LED1_drive(i);
-       HAL_Delay(wait);   
+       HAL_Delay(get_delay(i));   
     }
     
     // slowly turn off LED1 whiile at the same time turn on LED2
     for (i = 0; i <= MAX_PWM; i++) 
-    { 
-       wait = (400 / (i + 1)) / 6 + 1;  
+    {  
        set_LED1_drive(MAX_PWM - i);
        set_LED2_drive(i);
-       HAL_Delay(wait);         
+       HAL_Delay(get_delay(i));                
     }    
     
     // slowly turn off LED2
     for (i = 0; i <= MAX_PWM; i++)
-    {
-       wait = (400 / (MAX_PWM - i + 1)) / 6 + 1;  
+    { 
        set_LED2_drive(MAX_PWM - i);
-       HAL_Delay(wait);  
-
+       HAL_Delay(get_delay(MAX_PWM - i));  
     }       
   }
   /* USER CODE END 3 */
+}
+
+// variablw wait within [1..25]ms depending on PWM since 
+// the brightness don't change much at the higher end 
+uint16_t get_delay(uint16_t value) 
+{
+  uint16_t wait = (400 / (value + 1) ) / 6 + 1;  
+  if (wait > 25) 
+    wait = 25; 
+  return wait; 
 }
 
 /**
